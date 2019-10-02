@@ -26,6 +26,7 @@ RUN rpm -iUvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noa
 yum -y update ; \
 yum -y install phpmyadmin
 
-
+#configuring phpMyAdmin to allow connections from localhost
+RUN echo -e "Require ip 127.0.0.1\nAllow from 127.0.0.1\nRequire ip 127.0.0.1\nAllow from 127.0.0.1" > /etc/httpd/conf.d/phpMyAdmin.conf
 
 ENTRYPOINT /bin/bash
