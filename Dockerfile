@@ -11,7 +11,7 @@ RUN yum install -y python-pip ; \
     yum install -y git openssh-server openssh-clients tar wget ; \
     yum clean all
 # install bahmni installer
-RUN yum install -y https://dl.bintray.com/bahmni/rpm/rpms/:bahmni-erp-0.92-149.noarch.rpm
+RUN yum install -y https://dl.bintray.com/bahmni/rpm/rpms/bahmni-erp-0.92-149.noarch.rpm
 # add inventory file (for ansible)
 ADD local /etc/bahmni-installer/local
 # set initial bahmni configs
