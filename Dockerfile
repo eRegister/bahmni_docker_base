@@ -10,6 +10,11 @@ RUN yum install -y python-pip ; \
     pip install --upgrade pip ; \
     yum install -y git openssh-server openssh-clients tar wget ; \
     yum clean all
+
+# install postgresql for Odoo
+RUN yum install -y https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+RUN yum install -y postgresql96 postgresql96-server postgresql96-contrib postgresql96-libs
+
 # install bahmni installer
 RUN yum install -y https://dl.bintray.com/bahmni/rpm/rpms/bahmni-installer-0.92-155.noarch.rpm
 # add inventory file (for ansible)
