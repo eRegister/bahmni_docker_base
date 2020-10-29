@@ -4,7 +4,7 @@ FROM centos:centos7.6.1810
 RUN yum install -y sudo yum-plugin-ovl policycoreutils selinux-policy-targeted ; \
     yum clean all 
 # install EPEL repository for packages bahmni depends on
-RUN yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+RUN yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 # install packages bahmni depends on
 RUN yum install -y python-pip ; \
     pip install --upgrade pip ; \
