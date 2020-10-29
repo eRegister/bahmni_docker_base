@@ -1,3 +1,4 @@
+# we're upgrading to from centos 6.9 to centos 7.6
 FROM centos:centos7.6.1810
 # install system packages
 RUN yum install -y sudo yum-plugin-ovl policycoreutils selinux-policy-targeted ; \
