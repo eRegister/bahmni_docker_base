@@ -1,16 +1,16 @@
-FROM centos:6.9
+FROM centos:centos7.6.1810
 # install system packages
 RUN yum install -y sudo yum-plugin-ovl policycoreutils selinux-policy-targeted ; \
-yum clean all 
+    yum clean all 
 # install EPEL repository for packages bahmni depends on
 RUN yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
 # install packages bahmni depends on
 RUN yum install -y python-pip ; \
-pip install --upgrade pip ; \
-yum install -y git openssh-server openssh-clients tar wget ; \
-yum clean all
+    pip install --upgrade pip ; \
+    yum install -y git openssh-server openssh-clients tar wget ; \
+    yum clean all
 # install bahmni installer
-RUN yum install -y https://dl.bintray.com/bahmni/rpm/rpms/bahmni-installer-0.90-308.noarch.rpm
+RUN yum install -y https://dl.bintray.com/bahmni/rpm/rpms/:bahmni-erp-0.92-149.noarch.rpm
 # add inventory file (for ansible)
 ADD local /etc/bahmni-installer/local
 # set initial bahmni configs
@@ -20,13 +20,5 @@ RUN bahmni -ilocal install
 
 #installing nano, an easier alternative to vi for editing files
 RUN yum install nano
-
-# installing phpMyAdmin
-RUN rpm -iUvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm ; \
-yum -y update ; \
-yum -y install phpmyadmin
-
-#configuring phpMyAdmin to allow connections from localhost
-RUN echo -e "Require ip 127.0.0.1\nAllow from 127.0.0.1\nRequire ip 127.0.0.1\nAllow from 127.0.0.1" > /etc/httpd/conf.d/phpMyAdmin.conf
 
 ENTRYPOINT /bin/bash
