@@ -1,34 +1,41 @@
-127.0.0.1 ansible_connection=local
+localhost ansible_connection=local
 
 [nagios-server]
 
 [bahmni-emr]
-127.0.0.1
+localhost
 
 [bahmni-emr-db]
-127.0.0.1
+localhost
 
 [bahmni-emr-db-slave]
 
 [bahmni-erp]
+localhost
 
 [bahmni-erp-db]
+localhost
 
 [bahmni-erp-db-slave]
 
 [bahmni-lab]
+localhost
 
 [bahmni-lab-db]
+localhost
 
 [bahmni-lab-db-slave]
 
 [bahmni-reports]
-127.0.0.1
+localhost
 
 [bahmni-reports-db]
-127.0.0.1
+localhost
 
 [bahmni-reports-db-slave]
+
+[atomfeed-console]
+localhost
 
 [pacs-integration]
 
@@ -43,10 +50,17 @@
 [dcm4chee-db-slave]
 
 [bahmni-event-log-service]
-127.0.0.1
 
 [bahmni-offline]
-127.0.0.1
+
+[mysql-backup-tool]
+localhost
+
+[postgres-backup-tool]
+localhost
+
+[bahmni-backup-artifacts]
+localhost
 
 [local:children]
 nagios-server
@@ -69,3 +83,8 @@ dcm4chee
 dcm4chee-db
 dcm4chee-db-slave
 bahmni-event-log-service
+bahmni-offline
+atomfeed-console
+mysql-backup-tool
+postgres-backup-tool
+bahmni-backup-artifacts
